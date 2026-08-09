@@ -1714,6 +1714,82 @@
           </button>
         </div>
       </div>
+
+      <!-- INLINE DIRECT ORDER FORM (Minimal Steps, Maximum Conversion) -->
+      <div id="quick-order" class="reveal" style="max-width: 680px; margin: 50px auto 0; background: linear-gradient(145deg, #1E0B18 0%, #2D1225 100%); border: 2px solid var(--gold); border-radius: 28px; padding: 36px 32px; box-shadow: var(--shadow-lg); color: var(--white); position: relative;">
+        <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gradient-gold); color: var(--dark); font-weight: 800; font-size: 0.78rem; padding: 4px 20px; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px;">
+          ⚡ ĐẶT HÀNG NHANH CHỈ 30 GIÂY
+        </div>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; text-align: center; margin-bottom: 6px; color: var(--white);">Form Đặt Hàng Trực Tiếp</h3>
+        <p style="text-align: center; font-size: 0.9rem; color: rgba(255,255,255,0.65); margin-bottom: 24px;">Điền thông tin bên dưới – Giao hàng tận nhà toàn quốc</p>
+
+        <iframe name="inline_gform_iframe" id="inline_gform_iframe" style="display:none;" onload="if(inlineSubmitted){showInlineSuccess();}"></iframe>
+        <form id="inlineGForm" action="https://docs.google.com/forms/d/e/1FAIpQLSd2yE8cIbNr_16Qoe5CF1WP6icTJn4ZAge-P0VT-Wcyo4EHRQ/formResponse" method="POST" target="inline_gform_iframe" onsubmit="handleInlineSubmit(event)">
+          <input type="hidden" name="entry.1743355897" id="inlineGCombo" value="Mua 2 Tặng 1 - 130.000đ (Freeship toàn quốc)" />
+
+          <!-- Step 1: Select Combo -->
+          <div style="margin-bottom: 20px;">
+            <label class="form-label" style="font-weight: 700; color: var(--gold-light); font-size: 0.9rem; margin-bottom: 10px;">1. Chọn gói sản phẩm: <span>*</span></label>
+            <div class="combo-selector" style="grid-template-columns: 1fr 1fr; gap: 12px;">
+              <label class="combo-option">
+                <input type="radio" name="inlineComboSelect" value="1 Chai - 65.000đ (+ phí ship)" id="inlineComboBasic" onchange="updateInlineComboVal()" />
+                <span class="combo-label" style="background: rgba(255,255,255,0.04);">
+                  <span class="combo-icon">🧴</span>
+                  <span class="combo-name">1 Chai ASTA</span>
+                  <span class="combo-price">65.000đ</span>
+                  <span class="combo-price-note">+ phí ship</span>
+                </span>
+              </label>
+              <label class="combo-option">
+                <input type="radio" name="inlineComboSelect" value="Mua 2 Tặng 1 - 130.000đ (Freeship toàn quốc)" id="inlineComboPopular" checked onchange="updateInlineComboVal()" />
+                <span class="combo-badge">HOT</span>
+                <span class="combo-label" style="background: rgba(212,168,85,0.1); border-color: var(--gold);">
+                  <span class="combo-icon">🎁</span>
+                  <span class="combo-name">Mua 2 Tặng 1</span>
+                  <span class="combo-price">130.000đ</span>
+                  <span class="combo-price-note">Freeship toàn quốc</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 2: Customer details -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+            <div>
+              <label class="form-label" for="inlineCustName">Họ và tên <span>*</span></label>
+              <input class="form-input" type="text" name="entry.161012125" id="inlineCustName" placeholder="Ví dụ: Nguyễn Văn A" required />
+            </div>
+            <div>
+              <label class="form-label" for="inlineCustPhone">Số điện thoại <span>*</span></label>
+              <input class="form-input" type="tel" name="entry.63001543" id="inlineCustPhone" placeholder="0912 345 678" required pattern="[0-9]{9,11}" title="Nhập số điện thoại hợp lệ" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inlineCustAddress">Địa chỉ giao hàng chi tiết <span>*</span></label>
+            <input class="form-input" type="text" name="entry.1106739709" id="inlineCustAddress" placeholder="Số nhà, tên đường, phường/xã, quận/huyện, tỉnh/thành" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inlineCustNote">Ghi chú thêm (không bắt buộc)</label>
+            <input class="form-input" type="text" name="entry.1735315323" id="inlineCustNote" placeholder="Ví dụ: Giao ngoài giờ hành chính..." />
+          </div>
+
+          <button type="submit" class="btn-submit" id="inlineSubmitBtn" style="padding: 18px; font-size: 1.1rem; margin-top: 10px;">
+            <span id="inlineSubmitText">🛒 CHỐT ĐƠN HÀNG NGAY →</span>
+          </button>
+        </form>
+
+        <!-- Success Notification -->
+        <div id="inlineSuccessMsg" style="display: none; text-align: center; padding: 30px 10px;">
+          <div style="font-size: 3.5rem; margin-bottom: 12px;">🎉</div>
+          <h4 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold-light); margin-bottom: 8px;">ĐẶT HÀNG THÀNH CÔNG!</h4>
+          <p style="font-size: 0.95rem; color: rgba(255,255,255,0.8); line-height: 1.6;">Cảm ơn bạn đã lựa chọn Xả Vải Khô ASTA.<br />Bộ phận tư vấn sẽ gọi xác nhận đơn hàng trong <strong>30 phút</strong>.</p>
+          <div id="inlineOrderSummary" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(212,168,85,0.3); border-radius: 14px; padding: 16px; margin: 20px 0; text-align: left; font-size: 0.9rem;"></div>
+          <button onclick="resetInlineForm()" class="btn-secondary" style="margin-top: 10px; font-size: 0.85rem;">Đặt thêm đơn khác</button>
+        </div>
+      </div>
+
       <p style="text-align:center;margin-top:28px;font-size:0.85rem;color:var(--text-muted)">
         💬 Cần tư vấn? Nhắn Zalo: <a href="https://zalo.me/0917462846" target="_blank" style="color:var(--primary);font-weight:700;">0917 462 846</a>
       </p>
@@ -1919,9 +1995,10 @@
     });
 
     // ===========================
-    // ORDER MODAL & GOOGLE FORM
+    // INLINE & MODAL ORDER FORM (GOOGLE FORM DIRECT CONNECT)
     // ===========================
     let submitted = false;
+    let inlineSubmitted = false;
 
     function updateComboVal() {
       const selected = document.querySelector('input[name="comboSelect"]:checked');
@@ -1930,20 +2007,26 @@
       }
     }
 
-    function openModal(comboType) {
-      const modal = document.getElementById('orderModal');
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      document.getElementById('formScreen').style.display = 'block';
-      document.getElementById('successScreen').classList.remove('show');
-      submitted = false;
-
-      if (comboType === 'basic') {
-        document.getElementById('comboBasic').checked = true;
-      } else {
-        document.getElementById('comboPopular').checked = true;
+    function updateInlineComboVal() {
+      const selected = document.querySelector('input[name="inlineComboSelect"]:checked');
+      if (selected) {
+        document.getElementById('inlineGCombo').value = selected.value;
       }
-      updateComboVal();
+    }
+
+    function openModal(comboType) {
+      // Scroll to quick order form on page smoothly
+      const quickOrder = document.getElementById('quick-order');
+      if (quickOrder) {
+        quickOrder.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (comboType === 'basic') {
+          document.getElementById('inlineComboBasic').checked = true;
+        } else {
+          document.getElementById('inlineComboPopular').checked = true;
+        }
+        updateInlineComboVal();
+        return;
+      }
     }
 
     function closeModal() {
@@ -1988,6 +2071,44 @@
       document.getElementById('submitBtn').disabled = false;
       document.getElementById('submitText').textContent = '✅ XÁC NHẬN ĐẶT HÀNG';
       document.getElementById('gForm').reset();
+    }
+
+    function handleInlineSubmit(e) {
+      inlineSubmitted = true;
+      const btn = document.getElementById('inlineSubmitBtn');
+      btn.disabled = true;
+      document.getElementById('inlineSubmitText').textContent = '⏳ Đang gửi đơn hàng...';
+
+      const name = document.getElementById('inlineCustName').value;
+      const phone = document.getElementById('inlineCustPhone').value;
+      const address = document.getElementById('inlineCustAddress').value;
+      const combo = document.getElementById('inlineGCombo').value;
+
+      document.getElementById('inlineOrderSummary').innerHTML = `
+        <p style="margin-bottom:4px;">👤 <strong>${name}</strong></p>
+        <p style="margin-bottom:4px;">📱 <strong>${phone}</strong></p>
+        <p style="margin-bottom:4px;">📦 <strong>${combo}</strong></p>
+        <p>📍 ${address}</p>
+      `;
+
+      setTimeout(() => {
+        showInlineSuccess();
+      }, 1000);
+    }
+
+    function showInlineSuccess() {
+      document.getElementById('inlineGForm').style.display = 'none';
+      document.getElementById('inlineSuccessMsg').style.display = 'block';
+      document.getElementById('inlineSubmitBtn').disabled = false;
+      document.getElementById('inlineSubmitText').textContent = '🛒 CHỐT ĐƠN HÀNG NGAY →';
+    }
+
+    function resetInlineForm() {
+      document.getElementById('inlineGForm').reset();
+      document.getElementById('inlineComboPopular').checked = true;
+      updateInlineComboVal();
+      document.getElementById('inlineGForm').style.display = 'block';
+      document.getElementById('inlineSuccessMsg').style.display = 'none';
     }
   </script>
 </body>
