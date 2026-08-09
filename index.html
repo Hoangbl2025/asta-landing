@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xả Vải Khô ASTA – Làm Phẳng & Thơm Quần Áo Chỉ Trong 3 Giây | astalamdong.com</title>
+  <meta name="description" content="Xả Vải Khô Sinh Học ASTA – Giải pháp làm phẳng và khử mùi quần áo tức thì, tiện lợi mang theo mọi lúc mọi nơi. An toàn cho cả gia đình." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================
+       CSS VARIABLES & RESET
+    ============================= */
+    :root {
+      --primary:       #9B2D7F;
+      --primary-light: #C2529A;
+      --primary-dark:  #6E1A58;
+      --gold:          #D4A855;
+      --gold-light:    #F0CC7A;
+      --rose:          #E8607A;
+      --rose-light:    #F4A3B0;
+      --cream:         #FFF8F5;
+      --dark:          #1A0A14;
+      --dark-2:        #2D1625;
+      --text:          #3D1E33;
+      --text-muted:    #7A5268;
+      --white:         #FFFFFF;
+      --gradient-hero: linear-gradient(135deg, #1A0A14 0%, #3D1025 40%, #6E1A58 70%, #9B2D7F 100%);
+      --gradient-gold: linear-gradient(135deg, #D4A855 0%, #F0CC7A 50%, #D4A855 100%);
+      --gradient-soft: linear-gradient(135deg, #FFF0F5 0%, #FFE4ED 50%, #FFF5E0 100%);
+      --shadow-lg:     0 20px 60px rgba(155, 45, 127, 0.25);
+      --shadow-card:   0 8px 32px rgba(155, 45, 127, 0.15);
+      --radius:        20px;
+      --radius-sm:     12px;
+      --transition:    all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ============================
+       FLOATING PARTICLES
+    ============================= */
+    .particle {
+      position: fixed;
+      pointer-events: none;
+      border-radius: 50%;
+      z-index: 0;
+      animation: floatParticle linear infinite;
+      opacity: 0;
+    }
+    @keyframes floatParticle {
+      0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.4; }
+      100% { transform: translateY(-20vh) scale(1.2); opacity: 0; }
+    }
+
+    /* ============================
+       STICKY HEADER
+    ============================= */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(26, 10, 20, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(212, 168, 85, 0.2);
+      transition: var(--transition);
+    }
+    .site-header.scrolled {
+      padding: 10px 24px;
+      background: rgba(26, 10, 20, 0.96);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 3px;
+    }
+    .header-cta {
+      background: var(--gradient-gold);
+      color: var(--dark);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 10px 22px;
+      border-radius: 50px;
+      transition: var(--transition);
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .header-cta:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 24px rgba(212, 168, 85, 0.5);
+    }
+
+    /* ============================
+       HERO SECTION
+    ============================= */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--gradient-hero);
+    }
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.2;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,
+        rgba(26,10,20,0.9) 0%,
+        rgba(110,26,88,0.6) 60%,
+        rgba(155,45,127,0.3) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 40px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-text { }
+    .badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212, 168, 85, 0.15);
+      border: 1px solid rgba(212, 168, 85, 0.4);
+      color: var(--gold-light);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      animation: fadeInDown 0.6s ease both;
+    }
+    .badge-dot {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulseDot 1.5s ease-in-out infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50%       { transform: scale(1.5); opacity: 0.6; }
+    }
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4.5vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 20px;
+      animation: fadeInUp 0.7s 0.1s ease both;
+    }
+    .hero-headline .highlight {
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 36px;
+      animation: fadeInUp 0.7s 0.2s ease both;
+    }
+    .hero-cta-group {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.7s 0.3s ease both;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gradient-gold);
+      color: var(--dark);
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 16px 34px;
+      border-radius: 50px;
+      transition: var(--transition);
+      box-shadow: 0 8px 32px rgba(212,168,85,0.4);
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 16px 48px rgba(212,168,85,0.55);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 16px 28px;
+      border-radius: 50px;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.6);
+    }
+    .hero-trust {
+      display: flex;
+      gap: 24px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.7s 0.4s ease both;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .trust-icon { font-size: 1.1rem; }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      animation: fadeInRight 0.8s 0.3s ease both;
+    }
+    .video-showcase {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+    }
+    .video-glow {
+      position: absolute;
+      inset: -50px;
+      background: radial-gradient(ellipse, rgba(155,45,127,0.55) 0%, transparent 70%);
+      animation: pulseGlow 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50%       { transform: scale(1.1); opacity: 1; }
+    }
+    .video-border-wrap {
+      position: relative;
+      z-index: 2;
+      border-radius: 24px;
+      padding: 3px;
+      background: linear-gradient(135deg, rgba(212,168,85,0.8) 0%, rgba(155,45,127,0.6) 50%, rgba(212,168,85,0.8) 100%);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(155,45,127,0.3);
+      animation: borderGlow 4s ease-in-out infinite;
+    }
+    @keyframes borderGlow {
+      0%, 100% { box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(155,45,127,0.3); }
+      50%       { box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 80px rgba(212,168,85,0.4); }
+    }
+    .video-inner {
+      border-radius: 22px;
+      overflow: hidden;
+      background: var(--dark);
+      line-height: 0;
+    }
+    .video-inner iframe {
+      display: block;
+      width: 100%;
+      height: 560px;
+      border: none;
+    }
+    .floating-badge {
+      position: absolute;
+      background: rgba(26,10,20,0.92);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(212,168,85,0.45);
+      border-radius: 14px;
+      padding: 12px 16px;
+      z-index: 5;
+      animation: float 3s ease-in-out infinite;
+      white-space: nowrap;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+    .fb1 { top: 16px; right: -24px; animation-delay: 0s; }
+    .fb2 { bottom: 70px; left: -36px; animation-delay: 1.5s; }
+    .floating-badge-title { font-size: 0.7rem; color: rgba(255,255,255,0.6); margin-bottom: 2px; }
+    .floating-badge-val {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--white);
+    }
+    .floating-badge-val span { color: var(--gold); }
+    .video-label {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 1px;
+    }
+    .video-label a {
+      color: var(--gold-light);
+      transition: var(--transition);
+    }
+    .video-label a:hover { color: var(--white); }
+
+    /* ============================
+       SECTION COMMON
+    ============================= */
+    section { position: relative; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 30px; height: 2px;
+      background: var(--primary);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 14px;
+    }
+    .section-title .hl { color: var(--primary); }
+    .section-desc {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--text-muted);
+      max-width: 600px;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================
+       PAIN POINTS SECTION
+    ============================= */
+    .pain-section {
+      padding: 100px 0;
+      background: var(--dark);
+      overflow: hidden;
+    }
+    .pain-section .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .pain-text .section-title { color: var(--white); }
+    .pain-text .section-desc { color: rgba(255,255,255,0.6); }
+    .pain-list { margin-top: 36px; display: flex; flex-direction: column; gap: 20px; }
+    .pain-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(212,168,85,0.15);
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      cursor: default;
+    }
+    .pain-item:hover {
+      background: rgba(155,45,127,0.15);
+      border-color: rgba(155,45,127,0.4);
+      transform: translateX(6px);
+    }
+    .pain-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .pain-item-text {
+      font-size: 0.97rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.65;
+    }
+    .pain-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    .pain-big-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(5rem, 12vw, 10rem);
+      font-weight: 900;
+      color: rgba(255,255,255,0.03);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .pain-card {
+      background: linear-gradient(135deg, #2D1625 0%, #1A0A14 100%);
+      border: 1px solid rgba(212,168,85,0.2);
+      border-radius: var(--radius);
+      padding: 40px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    .pain-card-icon { font-size: 4rem; margin-bottom: 16px; }
+    .pain-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .pain-card-desc {
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       PRODUCT INTRO SECTION
+    ============================= */
+    .product-section {
+      padding: 100px 0;
+      background: var(--gradient-soft);
+    }
+    .product-section .container {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .product-img-container {
+      position: relative;
+    }
+    .product-main-img {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .product-main-img img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+    .product-accent {
+      position: absolute;
+      width: 120px; height: 120px;
+      background: var(--gradient-gold);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(212,168,85,0.5);
+      bottom: -20px; right: -20px;
+      animation: spinSlow 8s linear infinite;
+    }
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    .product-accent-inner {
+      text-align: center;
+      animation: spinSlow 8s linear infinite reverse;
+    }
+    .product-accent-inner span:first-child {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1;
+    }
+    .product-accent-inner span:last-child {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: 1px;
+    }
+    .product-info { }
+    .ingredient-list {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .ingredient-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: var(--white);
+      border: 1.5px solid rgba(155,45,127,0.2);
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      transition: var(--transition);
+    }
+    .ingredient-tag:hover {
+      background: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+    .product-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .product-detail-item {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      border-left: 3px solid var(--primary);
+      box-shadow: var(--shadow-card);
+    }
+    .product-detail-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .product-detail-val {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    /* ============================
+       BENEFITS / FEATURES SECTION
+    ============================= */
+    .benefits-section {
+      padding: 100px 0;
+      background: var(--white);
+    }
+    .benefits-header { text-align: center; margin-bottom: 60px; }
+    .benefits-header .section-label { justify-content: center; }
+    .benefits-header .section-desc { margin: 0 auto; }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    .benefit-card {
+      position: relative;
+      padding: 40px 36px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: default;
+    }
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: inherit;
+      border-radius: inherit;
+      transition: var(--transition);
+    }
+    .benefit-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    .benefit-card.card-1 { background: linear-gradient(135deg, #FFF0F9 0%, #FFE4EF 100%); border: 1px solid rgba(155,45,127,0.12); }
+    .benefit-card.card-2 { background: linear-gradient(135deg, #FFFAF0 0%, #FFF3D0 100%); border: 1px solid rgba(212,168,85,0.2); }
+    .benefit-card.card-3 { background: linear-gradient(135deg, #F5F0FF 0%, #EBE0FF 100%); border: 1px solid rgba(130,90,200,0.15); }
+    .benefit-card.card-4 { background: linear-gradient(135deg, #F0FFF8 0%, #D0FFE8 100%); border: 1px solid rgba(0,160,100,0.15); }
+    .benefit-icon-wrap {
+      width: 64px; height: 64px;
+      border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    .card-1 .benefit-icon-wrap { background: rgba(155,45,127,0.1); }
+    .card-2 .benefit-icon-wrap { background: rgba(212,168,85,0.15); }
+    .card-3 .benefit-icon-wrap { background: rgba(130,90,200,0.1); }
+    .card-4 .benefit-icon-wrap { background: rgba(0,160,100,0.1); }
+    .benefit-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .benefit-desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+    .benefit-bg-number {
+      position: absolute;
+      bottom: -10px; right: 10px;
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 900;
+      color: rgba(0,0,0,0.04);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    /* ============================
+       HOW TO USE SECTION
+    ============================= */
+    .howto-section {
+      padding: 100px 0;
+      background: var(--dark);
+      overflow: hidden;
+    }
+    .howto-header { text-align: center; margin-bottom: 60px; }
+    .howto-header .section-title { color: var(--white); }
+    .howto-header .section-desc { color: rgba(255,255,255,0.6); margin: 0 auto; }
+    .howto-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .howto-steps::before {
+      content: '';
+      position: absolute;
+      top: 60px; left: calc(16.67% + 30px); right: calc(16.67% + 30px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--gold) 100%);
+      z-index: 0;
+    }
+    .step-card {
+      position: relative;
+      text-align: center;
+      padding: 0 30px 50px;
+      z-index: 1;
+    }
+    .step-number-wrap {
+      position: relative;
+      width: 120px; height: 120px;
+      margin: 0 auto 28px;
+    }
+    .step-number-bg {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(155,45,127,0.2) 0%, rgba(212,168,85,0.2) 100%);
+      border: 1px solid rgba(212,168,85,0.3);
+      animation: stepPulse 3s ease-in-out infinite;
+    }
+    @keyframes stepPulse {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.05); }
+    }
+    .step-number {
+      position: absolute;
+      inset: 12px;
+      border-radius: 50%;
+      background: var(--gradient-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--dark);
+      box-shadow: 0 8px 24px rgba(212,168,85,0.4);
+    }
+    .step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .step-desc {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       TESTIMONIALS SECTION
+    ============================= */
+    .testimonials-section {
+      padding: 100px 0;
+      background: var(--gradient-soft);
+    }
+    .testimonials-header { text-align: center; margin-bottom: 60px; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px;
+      position: relative;
+      box-shadow: var(--shadow-card);
+      transition: var(--transition);
+      border: 1px solid rgba(155,45,127,0.08);
+    }
+    .testimonial-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    .testimonial-card.featured {
+      grid-column: span 2;
+      background: var(--gradient-hero);
+      border-color: rgba(212,168,85,0.3);
+    }
+    .quote-icon {
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--primary-light);
+      margin-bottom: 16px;
+      font-family: Georgia, serif;
+      opacity: 0.4;
+    }
+    .testimonial-card.featured .quote-icon { color: var(--gold); }
+    .testimonial-text {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--text);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-card.featured .testimonial-text { color: rgba(255,255,255,0.9); }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .author-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .av1 { background: linear-gradient(135deg, #F4A3B0, #E8607A); }
+    .av2 { background: linear-gradient(135deg, #FFCC88, #D4A855); }
+    .av3 { background: linear-gradient(135deg, #B8AAEE, #8A6FD4); }
+    .author-name { font-weight: 700; font-size: 0.9rem; color: var(--dark); }
+    .testimonial-card.featured .author-name { color: var(--white); }
+    .author-role { font-size: 0.78rem; color: var(--text-muted); }
+    .testimonial-card.featured .author-role { color: rgba(255,255,255,0.6); }
+    .stars { color: #FFBA00; font-size: 0.9rem; margin-top: 3px; }
+
+    /* ============================
+       PRICING SECTION
+    ============================= */
+    .pricing-section {
+      padding: 100px 0;
+      background: var(--white);
+    }
+    .pricing-header { text-align: center; margin-bottom: 60px; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .pricing-card {
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      position: relative;
+      transition: var(--transition);
+      overflow: hidden;
+    }
+    .pricing-card.basic {
+      background: var(--cream);
+      border: 2px solid rgba(155,45,127,0.15);
+    }
+    .pricing-card.popular {
+      background: var(--gradient-hero);
+      border: 2px solid rgba(212,168,85,0.5);
+      box-shadow: var(--shadow-lg);
+    }
+    .pricing-card:hover { transform: translateY(-8px); }
+    .popular-badge {
+      position: absolute;
+      top: 20px; right: -28px;
+      background: var(--gradient-gold);
+      color: var(--dark);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 8px 40px;
+      transform: rotate(45deg);
+    }
+    .pricing-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .pricing-card.popular .pricing-label { color: var(--gold-light); }
+    .pricing-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .pricing-card.popular .pricing-name { color: var(--white); }
+    .pricing-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .pricing-card.popular .pricing-desc { color: rgba(255,255,255,0.6); }
+    .pricing-price {
+      margin-bottom: 28px;
+    }
+    .price-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1;
+    }
+    .pricing-card.popular .price-amount {
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .price-note {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .pricing-card.popular .price-note { color: rgba(255,255,255,0.5); }
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pricing-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .pricing-card.popular .pricing-features li { color: rgba(255,255,255,0.85); }
+    .feat-check { color: var(--primary); font-weight: 700; }
+    .pricing-card.popular .feat-check { color: var(--gold); }
+    .btn-pricing {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+      letter-spacing: 0.3px;
+    }
+    .btn-pricing-basic {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .btn-pricing-basic:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+    .btn-pricing-popular {
+      background: var(--gradient-gold);
+      color: var(--dark);
+      box-shadow: 0 8px 24px rgba(212,168,85,0.4);
+    }
+    .btn-pricing-popular:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 36px rgba(212,168,85,0.55);
+    }
+
+    /* ============================
+       SAFETY & COMMITMENT SECTION
+    ============================= */
+    .safety-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #1A0A14 0%, #2D1625 100%);
+    }
+    .safety-section .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+    .safety-block { }
+    .safety-block-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--white);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .safety-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .safety-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+    }
+    .safety-list .icon { font-size: 1.1rem; flex-shrink: 0; }
+    .divider-v {
+      width: 1px;
+      background: rgba(212,168,85,0.2);
+      margin: 0 auto;
+    }
+
+    /* ============================
+       FOOTER
+    ============================= */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(212,168,85,0.15);
+      padding: 50px 0 30px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 5px;
+    }
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 2px;
+    }
+    .footer-divider {
+      width: 60px; height: 1px;
+      background: rgba(212,168,85,0.4);
+      margin: 4px auto;
+    }
+    .footer-link {
+      font-size: 0.9rem;
+      color: var(--gold-light);
+      transition: var(--transition);
+    }
+    .footer-link:hover { color: var(--white); }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ============================
+       FLOATING CTA BAR
+    ============================= */
+    .float-cta {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 999;
+      background: rgba(26,10,20,0.95);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(212,168,85,0.25);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transform: translateY(100%);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .float-cta.visible { transform: translateY(0); }
+    .float-cta-text {
+      color: var(--white);
+      font-size: 0.88rem;
+    }
+    .float-cta-text strong { color: var(--gold); }
+
+    /* ============================
+       ANIMATIONS
+    ============================= */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* ============================
+       RESPONSIVE
+    ============================= */
+    @media (max-width: 900px) {
+      .hero-content { grid-template-columns: 1fr; gap: 40px; padding: 100px 24px 60px; }
+      .hero-visual { display: flex; }
+      .video-showcase { max-width: 100%; }
+      .video-inner iframe { height: 360px; }
+      .floating-badge { display: none; }
+      .pain-section .container { grid-template-columns: 1fr; gap: 40px; }
+      .pain-visual { display: none; }
+      .product-section .container { grid-template-columns: 1fr; gap: 40px; }
+      .product-img-container { max-width: 360px; margin: 0 auto; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .howto-steps { grid-template-columns: 1fr; }
+      .howto-steps::before { display: none; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .testimonial-card.featured { grid-column: span 1; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
+      .safety-section .container { grid-template-columns: 1fr; gap: 40px; }
+      .divider-v { display: none; }
+      .container { padding: 0 20px; }
+      .float-cta { flex-direction: column; gap: 10px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="logo">ASTA</div>
+    <a href="#pricing" class="header-cta">🛒 Đặt Mua Ngay</a>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <img class="hero-bg-img"
+         src="asta_hero_bg_1786261309606.jpg"
+         alt="ASTA hero background" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="badge-top">
+          <span class="badge-dot"></span>
+          Công Nghệ Sinh Học Thái Lan
+        </div>
+        <h1 class="hero-headline">
+          TẠM BIỆT QUẦN ÁO<br />
+          <span class="highlight">NHĂN NHÚM & MÙI HÔI</span><br />
+          CHỈ TRONG 3 GIÂY!
+        </h1>
+        <p class="hero-sub">
+          Giải pháp làm phẳng và thơm quần áo tức thì với <strong>Xả Vải Khô Sinh Học ASTA</strong>.
+          Tiện lợi mang theo mọi lúc mọi nơi – An toàn cho cả gia đình.
+        </p>
+        <div class="hero-cta-group">
+          <a href="#pricing" class="btn-primary" id="heroCta">
+            🛒 ĐẶT MUA NGAY – NHẬN ƯU ĐÃI HÔM NAY!
+          </a>
+          <a href="#howto" class="btn-secondary" id="heroLearnMore">
+            ▶ Xem cách dùng
+          </a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item"><span class="trust-icon">✅</span> An toàn cho gia đình</div>
+          <div class="trust-item"><span class="trust-icon">🌿</span> Thành phần sinh học</div>
+          <div class="trust-item"><span class="trust-icon">🚚</span> Giao hàng toàn quốc</div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="video-showcase">
+          <div class="video-glow"></div>
+          <div class="video-border-wrap">
+            <div class="video-inner">
+              <iframe
+                id="heroVideoIframe"
+                src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fastalamdong%2Fvideos%2F1048618290369793%2F&show_text=false&width=420&t=0&autoplay=true&mute=false"
+                width="420"
+                height="560"
+                style="border:none;overflow:hidden"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                title="Video giới thiệu Xả Vải Khô ASTA"
+              ></iframe>
+            </div>
+          </div>
+          <div class="floating-badge fb1">
+            <div class="floating-badge-title">⭐ Đánh giá</div>
+            <div class="floating-badge-val"><span>4.9</span>/5.0 (1.2K+)</div>
+          </div>
+          <div class="floating-badge fb2">
+            <div class="floating-badge-title">🔬 Công nghệ</div>
+            <div class="floating-badge-val">Sinh học <span>Thái Lan</span></div>
+          </div>
+          <div class="video-label">
+            📺 Video thực tế sản phẩm ·
+            <a href="https://www.facebook.com/astalamdong/videos/1048618290369793" target="_blank" rel="noopener">Xem trên Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS SECTION -->
+  <section class="pain-section" id="painpoints">
+    <div class="container">
+      <div class="pain-text reveal">
+        <div class="section-label" style="color:var(--gold-light)">
+          <span style="background:var(--gold-light)"></span>Bạn có đang gặp phải?
+        </div>
+        <h2 class="section-title" style="color:var(--white)">
+          Những phiền toái<br /><span style="color:var(--gold)">quen thuộc mỗi ngày</span>
+        </h2>
+        <p class="section-desc" style="color:rgba(255,255,255,0.6)">
+          Hàng triệu người Việt đang đối mặt với những vấn đề này mỗi sáng. Bạn có phải là một trong số đó?
+        </p>
+        <div class="pain-list">
+          <div class="pain-item">
+            <span class="pain-icon">👔</span>
+            <p class="pain-item-text">
+              <strong style="color:var(--rose-light)">Quần áo nhăn nheo</strong> sau khi giặt hoặc lấy ra từ vali đi công tác, du lịch? Không kịp là ủi mà vẫn phải ra ngoài?
+            </p>
+          </div>
+          <div class="pain-item">
+            <span class="pain-icon">💨</span>
+            <p class="pain-item-text">
+              <strong style="color:var(--rose-light)">Đồ đạc bám mùi hôi ẩm mốc</strong> — chăn, ga, gối, rèm cửa trong những ngày mưa dài, không khô được?
+            </p>
+          </div>
+          <div class="pain-item">
+            <span class="pain-icon">⏰</span>
+            <p class="pain-item-text">
+              <strong style="color:var(--rose-light)">Quá bận rộn</strong>, không có thời gian lôi bàn ủi ra là ủi mỗi sáng trong khi vẫn muốn trông thật chỉn chu?
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="pain-visual reveal">
+        <div class="pain-big-text">?</div>
+        <div class="pain-card">
+          <div class="pain-card-icon">💡</div>
+          <h3 class="pain-card-title">Đã có giải pháp!</h3>
+          <p class="pain-card-desc">
+            Bạn không cần phải chịu đựng những phiền toái này thêm nữa.
+            <strong style="color:var(--gold)">Xả Vải Khô ASTA</strong> ra đời để giải quyết
+            tất cả những vấn đề đó chỉ trong <strong style="color:var(--gold)">3 giây đơn giản</strong>.
+          </p>
+          <br />
+          <a href="#pricing" class="btn-primary" style="display:inline-flex;" id="painCta">
+            🛒 Giải quyết ngay
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT INTRO SECTION -->
+  <section class="product-section" id="product">
+    <div class="container">
+      <div class="product-img-container reveal">
+        <div class="product-main-img">
+          <img src="asta_product_bottle_1786261297641.jpg"
+               alt="Xả Vải Khô Sinh Học ASTA – Hình ảnh sản phẩm" />
+        </div>
+        <div class="product-accent">
+          <div class="product-accent-inner">
+            <span>BIO</span>
+            <span>THAI</span>
+          </div>
+        </div>
+      </div>
+      <div class="product-info reveal">
+        <div class="section-label">Giới Thiệu Sản Phẩm</div>
+        <h2 class="section-title">
+          XẢ VẢI KHÔ <span class="hl">ASTA</span><br />
+          Bảo bối cuộc sống hiện đại
+        </h2>
+        <p class="section-desc">
+          Được sản xuất theo <strong>công nghệ sinh học Thái Lan</strong>, Xả Vải Khô Asta không chỉ
+          giúp làm sạch, khử mùi mà còn <strong>thay thế hoàn toàn bàn ủi truyền thống</strong>
+          trong những lúc cấp bách. Tiện lợi, hiệu quả và an toàn cho cả gia đình.
+        </p>
+        <div class="ingredient-list">
+          <span class="ingredient-tag">🧪 Cồn sinh học</span>
+          <span class="ingredient-tag">💧 Nước tinh khiết</span>
+          <span class="ingredient-tag">🌸 Hương nữ thần</span>
+          <span class="ingredient-tag">🌹 Hoa hồng Pháp</span>
+          <span class="ingredient-tag">🌿 Nguyên liệu lành tính</span>
+        </div>
+        <div class="product-detail-grid">
+          <div class="product-detail-item">
+            <div class="product-detail-label">Xuất xứ công nghệ</div>
+            <div class="product-detail-val">🇹🇭 Thái Lan</div>
+          </div>
+          <div class="product-detail-item">
+            <div class="product-detail-label">Hương thơm</div>
+            <div class="product-detail-val">🌸 Nữ thần & Hoa hồng</div>
+          </div>
+          <div class="product-detail-item">
+            <div class="product-detail-label">Thích hợp cho</div>
+            <div class="product-detail-val">👨‍👩‍👧 Cả gia đình</div>
+          </div>
+          <div class="product-detail-item">
+            <div class="product-detail-label">Tiêu chuẩn</div>
+            <div class="product-detail-val">✅ An toàn sinh học</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS SECTION -->
+  <section class="benefits-section" id="benefits">
+    <div class="container">
+      <div class="benefits-header reveal">
+        <div class="section-label">Công Dụng Vượt Trội</div>
+        <h2 class="section-title">4 lý do bạn không thể<br /><span class="hl">thiếu ASTA</span></h2>
+        <p class="section-desc">
+          Một sản phẩm, bốn công dụng mạnh mẽ – giải quyết mọi vấn đề về quần áo và không gian sống của bạn.
+        </p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card card-1 reveal">
+          <div class="benefit-icon-wrap">🌬️</div>
+          <h3 class="benefit-title">Khử Mùi Hiệu Quả</h3>
+          <p class="benefit-desc">
+            Xóa tan mùi hôi thức ăn, ẩm mốc trên quần áo, rèm cửa, chăn ga đệm. Trả lại không gian sống thơm mát, dễ chịu suốt ngày dài.
+          </p>
+          <div class="benefit-bg-number">01</div>
+        </div>
+        <div class="benefit-card card-2 reveal">
+          <div class="benefit-icon-wrap">🌟</div>
+          <h3 class="benefit-title">Chống Nhăn Tức Thì</h3>
+          <p class="benefit-desc">
+            Chỉ cần xịt và kéo căng, quần áo phẳng phiu ngay lập tức mà không cần dùng nhiệt. Tiết kiệm thời gian tối đa mỗi buổi sáng.
+          </p>
+          <div class="benefit-bg-number">02</div>
+        </div>
+        <div class="benefit-card card-3 reveal">
+          <div class="benefit-icon-wrap">🌸</div>
+          <h3 class="benefit-title">Lưu Hương Quyến Rũ</h3>
+          <p class="benefit-desc">
+            Hương nữ thần và hoa hồng Pháp mang lại cảm giác dịu nhẹ, thanh lịch và tự tin suốt ngày dài. Ấn tượng ngay từ lần đầu gặp gỡ.
+          </p>
+          <div class="benefit-bg-number">03</div>
+        </div>
+        <div class="benefit-card card-4 reveal">
+          <div class="benefit-icon-wrap">🛡️</div>
+          <h3 class="benefit-title">Kháng Khuẩn Bề Mặt</h3>
+          <p class="benefit-desc">
+            Thành phần sinh học lành tính giúp quần áo luôn sạch sẽ và an toàn cho làn da. Bảo vệ sức khỏe cả gia đình mỗi ngày.
+          </p>
+          <div class="benefit-bg-number">04</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO USE SECTION -->
+  <section class="howto-section" id="howto">
+    <div class="container">
+      <div class="howto-header reveal">
+        <div class="section-label" style="color:var(--gold-light);justify-content:center">
+          <span style="background:var(--gold)"></span>Hướng Dẫn Sử Dụng
+        </div>
+        <h2 class="section-title" style="color:var(--white)">
+          Chỉ <span style="color:var(--gold)">3 bước</span> đơn giản
+        </h2>
+        <p class="section-desc" style="color:rgba(255,255,255,0.6);margin:0 auto">
+          Không cần kỹ năng, không cần thiết bị – ai cũng có thể dùng được ngay lập tức.
+        </p>
+      </div>
+      <div class="howto-steps">
+        <div class="step-card reveal">
+          <div class="step-number-wrap">
+            <div class="step-number-bg"></div>
+            <div class="step-number">1</div>
+          </div>
+          <h3 class="step-title">Treo Quần Áo</h3>
+          <p class="step-desc">Treo quần áo cần làm phẳng lên móc hoặc mắc áo. Giữ cho vải thẳng đứng tự nhiên.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-number-wrap">
+            <div class="step-number-bg"></div>
+            <div class="step-number">2</div>
+          </div>
+          <h3 class="step-title">Xịt Đều ASTA</h3>
+          <p class="step-desc">Xịt đều Xả vải khô ASTA lên khu vực bị nhăn. Giữ khoảng cách 20–30cm để phủ đều bề mặt vải.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-number-wrap">
+            <div class="step-number-bg"></div>
+            <div class="step-number">3</div>
+          </div>
+          <h3 class="step-title">Kéo Căng & Xong!</h3>
+          <p class="step-desc">Kéo căng nhẹ nhàng hai bên mép vải và để khô tự nhiên trong chốc lát. Quần áo phẳng và thơm ngay!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="container">
+      <div class="testimonials-header reveal">
+        <div class="section-label" style="justify-content:center">Khách Hàng Nói Gì</div>
+        <h2 class="section-title">Hàng nghìn khách hàng<br /><span class="hl">đã tin dùng ASTA</span></h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card featured reveal">
+          <div class="quote-icon">"</div>
+          <p class="testimonial-text" style="font-size:1.15rem">
+            Từ ngày có chai xịt này, sáng đi làm nhàn hẳn, không cần lụi hụi ủi đồ nữa. Xịt một cái là đi được rồi, lại còn thơm cả ngày. Giờ đã mua thêm 3 chai để dự phòng rồi!
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar av1">H</div>
+            <div>
+              <div class="author-name" style="color:var(--white)">Chị Hương</div>
+              <div class="author-role">Nhân viên văn phòng – Hà Nội</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="quote-icon">"</div>
+          <p class="testimonial-text">
+            Đi du lịch mang theo cực tiện, lấy đồ từ vali ra xịt cái là phẳng lỳ, lại thơm mùi hoa hồng rất sang. Không thể thiếu khi đi công tác!
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar av2">M</div>
+            <div>
+              <div class="author-name">Anh Minh</div>
+              <div class="author-role">Hay đi công tác – TP. HCM</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="quote-icon">"</div>
+          <p class="testimonial-text">
+            Mùa mưa chăn gối hay bị ẩm mùi, từ khi dùng ASTA xịt vào là hết mùi ngay, lại thơm dịu không hắc như các loại khác. Rất an tâm cho con nhỏ.
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar av3">L</div>
+            <div>
+              <div class="author-name">Chị Lan</div>
+              <div class="author-role">Mẹ bỉm sữa – Đà Nẵng</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING SECTION -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <div class="pricing-header reveal">
+        <div class="section-label" style="justify-content:center">Bảng Giá & Ưu Đãi</div>
+        <h2 class="section-title">Chọn combo <span class="hl">phù hợp</span> với bạn</h2>
+        <p class="section-desc" style="margin:0 auto">
+          Ưu đãi có hạn – Đặt hàng ngay hôm nay để nhận giá tốt nhất!
+        </p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card basic reveal">
+          <div class="pricing-label">Combo Trải Nghiệm</div>
+          <h3 class="pricing-name">1 Chai ASTA</h3>
+          <p class="pricing-desc">Thích hợp cho người muốn trải nghiệm lần đầu</p>
+          <div class="pricing-price">
+            <div class="price-amount">Liên hệ</div>
+            <div class="price-note">+ Phí vận chuyển theo khu vực</div>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="feat-check">✓</span> 1 chai Xả Vải Khô ASTA</li>
+            <li><span class="feat-check">✓</span> Hướng dẫn sử dụng chi tiết</li>
+            <li><span class="feat-check">✓</span> Bảo hành chất lượng sản phẩm</li>
+            <li><span class="feat-check">✓</span> Giao hàng toàn quốc</li>
+          </ul>
+          <a href="https://astalamdong.com" target="_blank" class="btn-pricing btn-pricing-basic" id="pricingBasic">
+            🛍️ CHỌN ƯU ĐÃI NÀY
+          </a>
+        </div>
+        <div class="pricing-card popular reveal">
+          <div class="popular-badge">BÁN CHẠY</div>
+          <div class="pricing-label">Combo Siêu Hời</div>
+          <h3 class="pricing-name">Mua 2 Tặng 1</h3>
+          <p class="pricing-desc">Tiết kiệm nhất – Dùng lâu dài hoặc mua tặng</p>
+          <div class="pricing-price">
+            <div class="price-amount">Liên hệ</div>
+            <div class="price-note">🎁 MIỄN PHÍ vận chuyển toàn quốc</div>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="feat-check">✓</span> 3 chai (mua 2 tặng 1)</li>
+            <li><span class="feat-check">✓</span> <strong>FREESHIP</strong> toàn quốc</li>
+            <li><span class="feat-check">✓</span> Ưu tiên đóng gói & giao hàng</li>
+            <li><span class="feat-check">✓</span> Hỗ trợ sau mua hàng tận tình</li>
+            <li><span class="feat-check">✓</span> Bảo hành chất lượng 100%</li>
+          </ul>
+          <a href="https://astalamdong.com" target="_blank" class="btn-pricing btn-pricing-popular" id="pricingPopular">
+            🎁 CHỌN ƯU ĐÃI NÀY!
+          </a>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:28px;font-size:0.85rem;color:var(--text-muted)">
+        💬 Liên hệ trực tiếp để nhận báo giá và tư vấn chọn combo phù hợp nhất
+      </p>
+    </div>
+  </section>
+
+  <!-- SAFETY & COMMITMENT -->
+  <section class="safety-section" id="safety">
+    <div class="container">
+      <div class="safety-block reveal">
+        <h3 class="safety-block-title">
+          ⚠️ Lưu Ý An Toàn
+        </h3>
+        <ul class="safety-list">
+          <li><span class="icon">🔥</span> Sản phẩm dễ cháy – Tránh xa nguồn nhiệt và lửa trần</li>
+          <li><span class="icon">👁️</span> Không xịt vào mắt – Nếu dính mắt, rửa ngay bằng nước sạch</li>
+          <li><span class="icon">🌡️</span> Tránh bảo quản ở nhiệt độ cao trên 40°C</li>
+          <li><span class="icon">👶</span> Để xa tầm tay trẻ em dưới 6 tuổi</li>
+          <li><span class="icon">🚿</span> Nếu tiếp xúc với da nhiều, rửa lại bằng xà phòng</li>
+        </ul>
+      </div>
+      <div class="divider-v"></div>
+      <div class="safety-block reveal">
+        <h3 class="safety-block-title">
+          ✅ Cam Kết Từ ASTA
+        </h3>
+        <ul class="safety-list">
+          <li><span class="icon">🔬</span> Hàng chuẩn công nghệ sinh học – Kiểm định chất lượng nghiêm ngặt</li>
+          <li><span class="icon">🌿</span> An toàn với môi trường – Thành phần phân hủy sinh học</li>
+          <li><span class="icon">👨‍👩‍👧</span> An toàn cho cả gia đình – Kể cả trẻ em và người da nhạy cảm</li>
+          <li><span class="icon">📦</span> Đóng gói cẩn thận – Giao đúng sản phẩm, đúng thời gian</li>
+          <li><span class="icon">💯</span> Hoàn tiền nếu không hài lòng với chất lượng</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">ASTA</div>
+      <div class="footer-tagline">Công Nghệ Sinh Học · Cuộc Sống Hiện Đại</div>
+      <div class="footer-divider"></div>
+      <a href="https://astalamdong.com" target="_blank" class="footer-link" id="footerWebsite">
+        🌐 astalamdong.com
+      </a>
+      <p class="footer-copy">
+        © 2025 ASTA – Xả Vải Khô Sinh Học. Bảo lưu mọi quyền.
+      </p>
+    </div>
+  </footer>
+
+  <!-- FLOATING CTA BAR -->
+  <div class="float-cta" id="floatCta">
+    <div class="float-cta-text">
+      🔥 <strong>Ưu đãi có hạn</strong> – Combo Mua 2 Tặng 1 + Freeship đang chờ bạn!
+    </div>
+    <a href="#pricing" class="btn-primary" style="padding:12px 24px;font-size:0.88rem;white-space:nowrap;" id="floatCtaBtn">
+      🛒 Đặt Mua Ngay
+    </a>
+  </div>
+
+  <script>
+    // ===========================
+    // Sticky Header on Scroll
+    // ===========================
+    const header = document.getElementById('siteHeader');
+    const floatCta = document.getElementById('floatCta');
+    const hero = document.getElementById('hero');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      header.classList.toggle('scrolled', scrollY > 50);
+      const heroBottom = hero.offsetTop + hero.offsetHeight;
+      floatCta.classList.toggle('visible', scrollY > heroBottom * 0.5);
+    });
+
+    // ===========================
+    // Scroll Reveal Animation
+    // ===========================
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    // ===========================
+    // Floating Particles
+    // ===========================
+    const COLORS = ['rgba(212,168,85,0.5)', 'rgba(155,45,127,0.4)', 'rgba(232,96,122,0.3)', 'rgba(255,255,255,0.15)'];
+    function createParticle() {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = Math.random() * 10 + 4;
+      p.style.cssText = `
+        width:${size}px;height:${size}px;
+        left:${Math.random()*100}vw;
+        background:${COLORS[Math.floor(Math.random()*COLORS.length)]};
+        animation-duration:${Math.random()*10+8}s;
+        animation-delay:${Math.random()*5}s;
+      `;
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 18000);
+    }
+    setInterval(createParticle, 1200);
+    for (let i = 0; i < 6; i++) createParticle();
+
+    // ===========================
+    // Smooth anchor scrolling
+    // ===========================
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
