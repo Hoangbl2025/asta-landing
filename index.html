@@ -609,23 +609,20 @@
       overflow: hidden;
       transition: var(--transition);
       cursor: default;
+      z-index: 1;
     }
-    .benefit-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: inherit;
-      border-radius: inherit;
-      transition: var(--transition);
+    .benefit-card > * {
+      position: relative;
+      z-index: 2;
     }
     .benefit-card:hover {
       transform: translateY(-8px);
       box-shadow: var(--shadow-lg);
     }
-    .benefit-card.card-1 { background: linear-gradient(135deg, #FFF0F9 0%, #FFE4EF 100%); border: 1px solid rgba(155,45,127,0.12); }
-    .benefit-card.card-2 { background: linear-gradient(135deg, #FFFAF0 0%, #FFF3D0 100%); border: 1px solid rgba(212,168,85,0.2); }
-    .benefit-card.card-3 { background: linear-gradient(135deg, #F5F0FF 0%, #EBE0FF 100%); border: 1px solid rgba(130,90,200,0.15); }
-    .benefit-card.card-4 { background: linear-gradient(135deg, #F0FFF8 0%, #D0FFE8 100%); border: 1px solid rgba(0,160,100,0.15); }
+    .benefit-card.card-1 { background: linear-gradient(135deg, #FFF0F9 0%, #FFE4EF 100%); border: 1.5px solid rgba(155,45,127,0.25); }
+    .benefit-card.card-2 { background: linear-gradient(135deg, #FFFAF0 0%, #FFF3D0 100%); border: 1.5px solid rgba(212,168,85,0.3); }
+    .benefit-card.card-3 { background: linear-gradient(135deg, #F5F0FF 0%, #EBE0FF 100%); border: 1.5px solid rgba(130,90,200,0.25); }
+    .benefit-card.card-4 { background: linear-gradient(135deg, #F0FFF8 0%, #D0FFE8 100%); border: 1.5px solid rgba(0,160,100,0.25); }
     .benefit-icon-wrap {
       width: 64px; height: 64px;
       border-radius: 18px;
@@ -634,21 +631,21 @@
       margin-bottom: 22px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.1);
     }
-    .card-1 .benefit-icon-wrap { background: rgba(155,45,127,0.1); }
-    .card-2 .benefit-icon-wrap { background: rgba(212,168,85,0.15); }
-    .card-3 .benefit-icon-wrap { background: rgba(130,90,200,0.1); }
-    .card-4 .benefit-icon-wrap { background: rgba(0,160,100,0.1); }
+    .card-1 .benefit-icon-wrap { background: rgba(155,45,127,0.15); }
+    .card-2 .benefit-icon-wrap { background: rgba(212,168,85,0.25); }
+    .card-3 .benefit-icon-wrap { background: rgba(130,90,200,0.15); }
+    .card-4 .benefit-icon-wrap { background: rgba(0,160,100,0.15); }
     .benefit-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--dark);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #1A0A14 !important;
       margin-bottom: 12px;
     }
     .benefit-desc {
       font-size: 0.95rem;
       line-height: 1.7;
-      color: var(--text-muted);
+      color: #4D263D !important;
     }
     .benefit-bg-number {
       position: absolute;
@@ -656,9 +653,10 @@
       font-family: 'Playfair Display', serif;
       font-size: 5rem;
       font-weight: 900;
-      color: rgba(0,0,0,0.04);
+      color: rgba(0,0,0,0.06);
       line-height: 1;
       pointer-events: none;
+      z-index: 1;
     }
 
     /* ============================
@@ -1341,8 +1339,61 @@
     <button onclick="openModal()" class="header-cta">🛒 Đặt Mua Ngay</button>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="hero" id="hero">
+  <!-- PAIN POINTS SECTION (FIRST SCREEN FOR MAXIMUM EMOTIONAL IMPACT) -->
+  <section class="pain-section" id="painpoints" style="padding-top: 110px;">
+    <div class="container">
+      <div class="pain-text reveal">
+        <div class="section-label" style="color:var(--gold-light)">
+          <span style="background:var(--gold-light)"></span>Bạn có đang gặp phải?
+        </div>
+        <h2 class="section-title" style="color:var(--white)">
+          Những phiền toái<br /><span style="color:var(--gold)">quen thuộc mỗi ngày</span>
+        </h2>
+        <p class="section-desc" style="color:rgba(255,255,255,0.65)">
+          Hàng triệu người Việt đang đối mặt với những vấn đề này mỗi sáng. Bạn có phải là một trong số đó?
+        </p>
+        <div class="pain-list">
+          <div class="pain-item">
+            <span class="pain-icon">👔</span>
+            <p class="pain-item-text">
+              <strong style="color:var(--rose-light)">Quần áo nhăn nheo</strong> sau khi giặt hoặc lấy ra từ vali đi công tác, du lịch? Không kịp là ủi mà vẫn phải ra ngoài?
+            </p>
+          </div>
+          <div class="pain-item">
+            <span class="pain-icon">💨</span>
+            <p class="pain-item-text">
+              <strong style="color:var(--rose-light)">Đồ đạc bám mùi hôi ẩm mốc</strong> — chăn, ga, gối, rèm cửa trong những ngày mưa dài, không khô được?
+            </p>
+          </div>
+          <div class="pain-item">
+            <span class="pain-icon">⏰</span>
+            <p class="pain-item-text">
+              <strong style="color:var(--rose-light)">Quá bận rộn</strong>, không có thời gian lôi bàn ủi ra là ủi mỗi sáng trong khi vẫn muốn trông thật chỉn chu?
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="pain-visual reveal">
+        <div class="pain-big-text">?</div>
+        <div class="pain-card">
+          <div class="pain-card-icon">💡</div>
+          <h3 class="pain-card-title">Đã có giải pháp!</h3>
+          <p class="pain-card-desc">
+            Bạn không cần phải chịu đựng những phiền toái này thêm nữa.
+            <strong style="color:var(--gold)">Xả Vải Khô ASTA</strong> ra đời để giải quyết
+            tất cả những vấn đề đó chỉ trong <strong style="color:var(--gold)">3 giây đơn giản</strong>.
+          </p>
+          <br />
+          <button onclick="openModal('popular')" class="btn-primary" style="display:inline-flex;" id="painCta">
+            🛒 Giải quyết ngay
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HERO & SOLUTION SECTION -->
+  <section class="hero" id="hero" style="min-height: auto; padding: 70px 0;">
     <img class="hero-bg-img"
          src="asta_hero_bg_1786261309606.jpg"
          alt="ASTA hero background" />
@@ -1407,59 +1458,6 @@
             📺 Video thực tế sản phẩm ·
             <a href="https://www.facebook.com/astalamdong/videos/1048618290369793" target="_blank" rel="noopener">Xem trên Facebook</a>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PAIN POINTS SECTION -->
-  <section class="pain-section" id="painpoints">
-    <div class="container">
-      <div class="pain-text reveal">
-        <div class="section-label" style="color:var(--gold-light)">
-          <span style="background:var(--gold-light)"></span>Bạn có đang gặp phải?
-        </div>
-        <h2 class="section-title" style="color:var(--white)">
-          Những phiền toái<br /><span style="color:var(--gold)">quen thuộc mỗi ngày</span>
-        </h2>
-        <p class="section-desc" style="color:rgba(255,255,255,0.6)">
-          Hàng triệu người Việt đang đối mặt với những vấn đề này mỗi sáng. Bạn có phải là một trong số đó?
-        </p>
-        <div class="pain-list">
-          <div class="pain-item">
-            <span class="pain-icon">👔</span>
-            <p class="pain-item-text">
-              <strong style="color:var(--rose-light)">Quần áo nhăn nheo</strong> sau khi giặt hoặc lấy ra từ vali đi công tác, du lịch? Không kịp là ủi mà vẫn phải ra ngoài?
-            </p>
-          </div>
-          <div class="pain-item">
-            <span class="pain-icon">💨</span>
-            <p class="pain-item-text">
-              <strong style="color:var(--rose-light)">Đồ đạc bám mùi hôi ẩm mốc</strong> — chăn, ga, gối, rèm cửa trong những ngày mưa dài, không khô được?
-            </p>
-          </div>
-          <div class="pain-item">
-            <span class="pain-icon">⏰</span>
-            <p class="pain-item-text">
-              <strong style="color:var(--rose-light)">Quá bận rộn</strong>, không có thời gian lôi bàn ủi ra là ủi mỗi sáng trong khi vẫn muốn trông thật chỉn chu?
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="pain-visual reveal">
-        <div class="pain-big-text">?</div>
-        <div class="pain-card">
-          <div class="pain-card-icon">💡</div>
-          <h3 class="pain-card-title">Đã có giải pháp!</h3>
-          <p class="pain-card-desc">
-            Bạn không cần phải chịu đựng những phiền toái này thêm nữa.
-            <strong style="color:var(--gold)">Xả Vải Khô ASTA</strong> ra đời để giải quyết
-            tất cả những vấn đề đó chỉ trong <strong style="color:var(--gold)">3 giây đơn giản</strong>.
-          </p>
-          <br />
-          <button onclick="openModal('popular')" class="btn-primary" style="display:inline-flex;" id="painCta">
-            🛒 Giải quyết ngay
-          </button>
         </div>
       </div>
     </div>
