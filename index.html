@@ -346,6 +346,114 @@
     }
 
     /* ============================
+       PRODUCT INTRO SECTION
+    ============================= */
+    .product-section {
+      padding: 80px 0;
+      background: var(--gradient-soft);
+    }
+    .product-section .container {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .product-img-container {
+      position: relative;
+    }
+    .product-main-img {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 3px solid rgba(212,168,85,0.5);
+      background: #000;
+    }
+    .product-main-img img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+    .product-accent {
+      position: absolute;
+      width: 105px; height: 105px;
+      background: var(--gradient-gold);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(212,168,85,0.5);
+      bottom: -15px; right: -15px;
+      animation: spinSlow 8s linear infinite;
+    }
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    .product-accent-inner {
+      text-align: center;
+      animation: spinSlow 8s linear infinite reverse;
+    }
+    .product-accent-inner span:first-child {
+      display: block;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1;
+    }
+    .product-accent-inner span:last-child {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: 1px;
+    }
+    .ingredient-list {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .ingredient-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: var(--white);
+      border: 1.5px solid rgba(155,45,127,0.2);
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+    .product-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .product-detail-item {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      border-left: 3px solid var(--primary);
+      box-shadow: var(--shadow-card);
+    }
+    .product-detail-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .product-detail-val {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    /* ============================
        PAIN vs SOLUTION COMPARISON
     ============================= */
     .compare-section {
@@ -734,6 +842,7 @@
       .hero-content { grid-template-columns: 1fr; gap: 36px; padding-top: 90px; }
       .compare-grid { grid-template-columns: 1fr; }
       .benefits-grid { grid-template-columns: 1fr; }
+      .product-section .container { grid-template-columns: 1fr; gap: 40px; }
       .howto-steps { grid-template-columns: 1fr; }
       .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
       .container { padding: 0 20px; }
@@ -802,6 +911,60 @@
             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
             title="Video xịt vuốt phẳng thực tế ASTA"
           ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT INTRO SECTION (GIỚI THIỆU SẢN PHẨM PHẢN ÁNH ẢNH THẬT) -->
+  <section class="product-section" id="product">
+    <div class="container">
+      <div class="product-img-container reveal">
+        <div class="product-main-img">
+          <img src="asta_real_product.jpg" alt="Hình ảnh sản phẩm thật Xả Vải Khô ASTA Thái Lan 5in1" />
+        </div>
+        <div class="product-accent">
+          <div class="product-accent-inner">
+            <span>BIO</span>
+            <span>THAI</span>
+          </div>
+        </div>
+      </div>
+      <div class="product-info reveal">
+        <div class="section-label">Giới Thiệu Sản Phẩm</div>
+        <h2 class="section-title">
+          XẢ VẢI KHÔ <span class="hl">ASTA</span><br />
+          Bảo bối cuộc sống hiện đại
+        </h2>
+        <p class="section-desc">
+          Được sản xuất theo <strong>công nghệ sinh học Thái Lan 5in1</strong>, Xả Vải Khô ASTA không chỉ
+          giúp khử mùi hôi ẩm mốc mà còn <strong>làm phẳng quần áo tức thì trong 3 giây</strong>
+          thay thế hoàn toàn bàn ủi truyền thống. Tiện lợi, thơm ngát và an toàn cho cả gia đình.
+        </p>
+        <div class="ingredient-list">
+          <span class="ingredient-tag">🧪 Cồn sinh học</span>
+          <span class="ingredient-tag">💧 Nước tinh khiết</span>
+          <span class="ingredient-tag">🌸 Hương nữ thần</span>
+          <span class="ingredient-tag">🌹 Hoa hồng Pháp</span>
+          <span class="ingredient-tag">🌿 Nguyên liệu lành tính</span>
+        </div>
+        <div class="product-detail-grid">
+          <div class="product-detail-item">
+            <div class="product-detail-label">Xuất xứ công nghệ</div>
+            <div class="product-detail-val">🇹🇭 Thái Lan 5in1</div>
+          </div>
+          <div class="product-detail-item">
+            <div class="product-detail-label">Hương thơm</div>
+            <div class="product-detail-val">🌸 Nữ thần & Hoa hồng</div>
+          </div>
+          <div class="product-detail-item">
+            <div class="product-detail-label">Thích hợp cho</div>
+            <div class="product-detail-val">👨‍👩‍👧 Cả gia đình</div>
+          </div>
+          <div class="product-detail-item">
+            <div class="product-detail-label">Tiêu chuẩn</div>
+            <div class="product-detail-val">✅ An toàn sinh học</div>
+          </div>
         </div>
       </div>
     </div>
